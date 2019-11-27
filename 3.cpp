@@ -2,19 +2,20 @@
 #include <vector>
 
 using namespace std;
-void erSieving(long long n, vector <bool> &isPrime)
+void erSieving(long long &n, vector <bool> &isPrime)
 {
 	long long d = 2;
-	while (d * d <= n)
+	while (d <= n)
 	{
 		if (isPrime[d])
 		{
+			++n;
 			for (auto i = d * d; i <= n; i += d)
 			{
 				isPrime[i] = false;
 			}
 		}
-		++d;
+	++d;	
 	}
 	
 }
