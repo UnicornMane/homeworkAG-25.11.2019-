@@ -1,21 +1,20 @@
-﻿#include <iostream>
+#include <iostream>
 #include <vector>
 
 using namespace std;
-void erSieving(long long &n, vector <bool> &isPrime)
+void erSieving(long long n, vector <bool> &isPrime)
 {
 	long long d = 2;
-	while (d <= n)
+	while (d * d <= n)
 	{
 		if (isPrime[d])
 		{
-			++n;
-			for (auto i = d * d; i <= n; i += d)
+			for (long long i = d * d; i <= n; i += d)
 			{
 				isPrime[i] = false;
 			}
 		}
-	++d;	
+		++d;
 	}
 	
 }
@@ -24,17 +23,20 @@ int main()
 {
 	long long n;
 	cin >> n;
+	long long t = n;
+	n *= 2;
 	vector <bool> isPrime(n + 1, true);
 	isPrime[0] = false;
 	isPrime[1] = false;
 	
 	erSieving(n, isPrime);
 	
-	for (auto i = 0; i <= n; i++)
+	for (long long i = 1, j = 1; j <= t; i++)
 	{
 		if (!isPrime[i])
 		{
 			cout << i << '\n';
+			j++;
 		}
 	}
 }
