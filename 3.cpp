@@ -23,6 +23,26 @@ int main()
 {
 	long long n;
 	cin >> n;
+  if (n == 1)
+  {
+    cout << 4;
+    return 0;
+  }
+  if (n == 2)
+  {
+    cout << 4 << '\n' << 6;
+    return 0;
+  }
+  if (n == 3)
+  {
+    cout << 4 << '\n' << 6 << '\n' << 8;
+    return 0;
+  }
+  if (n == 4)
+  {
+    cout << 4 << '\n' << 6 << '\n' << 8 << '\n' << 9;
+    return 0;
+  }
 	long long t = n;
 	n *= 2;
 	vector <bool> isPrime(n + 1, true);
@@ -31,7 +51,7 @@ int main()
 	
 	erSieving(n, isPrime);
 	
-	for (long long i = 1, j = 1; j <= t; i++)
+	for (long long i = 2, j = 1; j <= t; i++)
 	{
 		if (!isPrime[i])
 		{
